@@ -1,0 +1,392 @@
+{
+  "summary": {
+    "total_phases": 20,
+    "total_projects": 20,
+    "completed": 0,
+    "in_progress": 0,
+    "pending": 20,
+    "completion_rate": "0.0%"
+  },
+  "phases": [
+    {
+      "phase_num": 1,
+      "phase_title": "Python for Data Science",
+      "dir": "Phase_01_Python_for_Data_Science",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "MT5 Historical Market Data Collector",
+          "folder": "Project_Trading_MT5_Historical_Market_Data_Collector",
+          "path": "Phase_01_Python_for_Data_Science/Projects/Project_Trading_MT5_Historical_Market_Data_Collector",
+          "status": "Completed",
+          "progress_pct": 100,
+          "started_at": null,
+          "completed_at": "2026-11-15T18:19:50.336333",
+          "notes": "Bypassed / marked complete by user"
+        }
+      ]
+    },
+    {
+      "phase_num": 2,
+      "phase_title": "Mathematics for Data Science",
+      "dir": "Phase_02_Mathematics_for_Data_Science",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Return, Volatility & Portfolio Mathematics Calculator",
+          "folder": "Project_Trading_Return_Volatility_Portfolio_Math_Calculator",
+          "path": "Phase_02_Mathematics_for_Data_Science/Projects/Project_Trading_Return_Volatility_Portfolio_Math_Calculator",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 3,
+      "phase_title": "Probability & Statistics",
+      "dir": "Phase_03_Probability_and_Statistics",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "US30 Return Distributions & Conditional Probability Analyzer",
+          "folder": "Project_Trading_US30_Return_Distributions_Analysis",
+          "path": "Phase_03_Probability_and_Statistics/Projects/Project_Trading_US30_Return_Distributions_Analysis",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 4,
+      "phase_title": "Data Analysis & Manipulation",
+      "dir": "Phase_04_Data_Analysis_and_Manipulation",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Multi-Timeframe Financial Data Analysis System",
+          "folder": "Project_Trading_Multi_Timeframe_Financial_Data_Analysis",
+          "path": "Phase_04_Data_Analysis_and_Manipulation/Projects/Project_Trading_Multi_Timeframe_Financial_Data_Analysis",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 5,
+      "phase_title": "Data Visualization & Reporting",
+      "dir": "Phase_05_Data_Visualization_and_Reporting",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Financial Market Research Dashboard",
+          "folder": "Project_Trading_Financial_Market_Research_Dashboard",
+          "path": "Phase_05_Data_Visualization_and_Reporting/Projects/Project_Trading_Financial_Market_Research_Dashboard",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 6,
+      "phase_title": "SQL & Database Management",
+      "dir": "Phase_06_SQL_and_Database_Management",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Historical Financial Market OHLCV Database",
+          "folder": "Project_Trading_Historical_Financial_Market_Database",
+          "path": "Phase_06_SQL_and_Database_Management/Projects/Project_Trading_Historical_Financial_Market_Database",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 7,
+      "phase_title": "Data Collection & Engineering",
+      "dir": "Phase_07_Data_Collection_and_Engineering",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Automated MT5 Market Data Pipeline",
+          "folder": "Project_Trading_Automated_MT5_Market_Data_Pipeline",
+          "path": "Phase_07_Data_Collection_and_Engineering/Projects/Project_Trading_Automated_MT5_Market_Data_Pipeline",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 8,
+      "phase_title": "Exploratory Data Analysis & Feature Engineering",
+      "dir": "Phase_08_EDA_and_Feature_Engineering",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Financial Feature Engineering System",
+          "folder": "Project_Trading_Financial_Feature_Engineering_System",
+          "path": "Phase_08_EDA_and_Feature_Engineering/Projects/Project_Trading_Financial_Feature_Engineering_System",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 9,
+      "phase_title": "Machine Learning Fundamentals",
+      "dir": "Phase_09_Machine_Learning_Fundamentals",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "US30 Price Direction Probability Classification Model",
+          "folder": "Project_Trading_US30_Price_Direction_Classification_Model",
+          "path": "Phase_09_Machine_Learning_Fundamentals/Projects/Project_Trading_US30_Price_Direction_Classification_Model",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 10,
+      "phase_title": "Machine Learning Algorithms",
+      "dir": "Phase_10_Machine_Learning_Algorithms",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Random Forest & XGBoost Financial Market Direction Predictor",
+          "folder": "Project_Trading_Random_Forest_XGBoost_Market_Direction",
+          "path": "Phase_10_Machine_Learning_Algorithms/Projects/Project_Trading_Random_Forest_XGBoost_Market_Direction",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 11,
+      "phase_title": "Time-Series Analysis & Forecasting",
+      "dir": "Phase_11_Time_Series_Analysis_and_Forecasting",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Financial Return & Volatility Forecasting System",
+          "folder": "Project_Trading_Financial_Return_Volatility_Forecasting",
+          "path": "Phase_11_Time_Series_Analysis_and_Forecasting/Projects/Project_Trading_Financial_Return_Volatility_Forecasting",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 12,
+      "phase_title": "Deep Learning",
+      "dir": "Phase_12_Deep_Learning",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "LSTM-based Financial Time-Series Forecasting Model",
+          "folder": "Project_Trading_LSTM_Financial_Time_Series_Forecaster",
+          "path": "Phase_12_Deep_Learning/Projects/Project_Trading_LSTM_Financial_Time_Series_Forecaster",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 13,
+      "phase_title": "Natural Language Processing",
+      "dir": "Phase_13_Natural_Language_Processing",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Financial News Sentiment Analysis & Classification System",
+          "folder": "Project_Trading_Financial_News_Sentiment_Analysis",
+          "path": "Phase_13_Natural_Language_Processing/Projects/Project_Trading_Financial_News_Sentiment_Analysis",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 14,
+      "phase_title": "Advanced Quantitative Market Research",
+      "dir": "Phase_14_Advanced_Quantitative_Market_Research",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Statistical Arbitrage & Pairs Trading Research System",
+          "folder": "Project_Trading_Statistical_Arbitrage_Pairs_Trading",
+          "path": "Phase_14_Advanced_Quantitative_Market_Research/Projects/Project_Trading_Statistical_Arbitrage_Pairs_Trading",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 15,
+      "phase_title": "Quantitative Strategy Development",
+      "dir": "Phase_15_Quantitative_Strategy_Development",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Rule-Based Quantitative Trading Strategy",
+          "folder": "Project_Trading_Statistically_Researched_Trading_Strategy",
+          "path": "Phase_15_Quantitative_Strategy_Development/Projects/Project_Trading_Statistically_Researched_Trading_Strategy",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 16,
+      "phase_title": "Backtesting Engineering",
+      "dir": "Phase_16_Backtesting_Engineering",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Python Backtesting Engine with Realistic MT5 Trading Costs",
+          "folder": "Project_Trading_Python_Backtesting_Engine_Realistic_Costs",
+          "path": "Phase_16_Backtesting_Engineering/Projects/Project_Trading_Python_Backtesting_Engine_Realistic_Costs",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 17,
+      "phase_title": "Performance & Risk Analysis",
+      "dir": "Phase_17_Performance_and_Risk_Analysis",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Automated Trading Strategy Performance Evaluation Dashboard",
+          "folder": "Project_Trading_Automated_Strategy_Performance_Dashboard",
+          "path": "Phase_17_Performance_and_Risk_Analysis/Projects/Project_Trading_Automated_Strategy_Performance_Dashboard",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 18,
+      "phase_title": "Strategy Validation & Robustness",
+      "dir": "Phase_18_Strategy_Validation_and_Robustness",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Strategy Validation Framework for Overfitting & Bias Detection",
+          "folder": "Project_Trading_Trading_Strategy_Validation_Framework",
+          "path": "Phase_18_Strategy_Validation_and_Robustness/Projects/Project_Trading_Trading_Strategy_Validation_Framework",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 19,
+      "phase_title": "MLOps & Model Deployment",
+      "dir": "Phase_19_MLOps_and_Model_Deployment",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Deployed Financial Prediction API for Market Data",
+          "folder": "Project_Trading_Financial_Prediction_API",
+          "path": "Phase_19_MLOps_and_Model_Deployment/Projects/Project_Trading_Financial_Prediction_API",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "phase_num": 20,
+      "phase_title": "Live Research & Automated Systems",
+      "dir": "Phase_20_Live_Research_and_Automated_Systems",
+      "projects": [
+        {
+          "project_num": 1,
+          "type": "Trading",
+          "title": "Live MT5 Quantitative Research System",
+          "folder": "Project_Trading_Live_MT5_Quantitative_Research_System",
+          "path": "Phase_20_Live_Research_and_Automated_Systems/Projects/Project_Trading_Live_MT5_Quantitative_Research_System",
+          "status": "Pending",
+          "progress_pct": 0,
+          "started_at": null,
+          "completed_at": null,
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

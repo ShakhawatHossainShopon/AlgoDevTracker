@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 02: Equations and Inequalities in Algo Trading</title>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-subtle: #f1f5f9;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --accent-border: #bfdbfe;
+            --text-main: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-subtle: #cbd5e1;
+            --tag-bg: #e0f2fe;
+            --tag-text: #0369a1;
+            --success-bg: #ecfdf5;
+            --success-border: #a7f3d0;
+            --success-text: #065f46;
+            --warning-bg: #fffbeb;
+            --warning-border: #fde68a;
+            --warning-text: #92400e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Hind Siliguri", "Kalpurush", sans-serif;
+            background-color: var(--bg);
+            color: var(--text-body);
+            line-height: 1.8;
+            padding: 2.5rem 1rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: var(--surface-subtle);
+            border-color: var(--border-subtle);
+        }
+
+        header {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 6px solid var(--accent);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .badge-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        h1 {
+            color: var(--text-main);
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.35;
+            margin-bottom: 0.8rem;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 2px solid var(--surface-subtle);
+            padding-bottom: 0.6rem;
+        }
+
+        h3 {
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 1.4rem 0 0.6rem 0;
+        }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .callout {
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.2rem 0;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            border-left: 4px solid;
+        }
+
+        .callout-info {
+            background: var(--accent-light);
+            border-left-color: var(--accent);
+            color: #1e40af;
+        }
+
+        .callout-tip {
+            background: var(--success-bg);
+            border-left-color: #10b981;
+            color: var(--success-text);
+        }
+
+        .callout-warning {
+            background: var(--warning-bg);
+            border-left-color: #f59e0b;
+            color: var(--warning-text);
+        }
+
+        pre {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem 1.4rem;
+            overflow-x: auto;
+            font-family: "Consolas", monospace;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            color: #0f172a;
+        }
+
+        code {
+            font-family: "Consolas", monospace;
+            background: #f1f5f9;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #0f172a;
+        }
+
+        .formula-box {
+            background: #f8fafc;
+            border: 2px dashed var(--accent-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .btn-action {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.85rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn-action:hover {
+            background: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="../../index.html" class="nav-link">← মাস্টার সিলেবাস ড্যাশবোর্ড</a>
+        <a href="./Project/index.html" class="nav-link">🚀 প্রজেক্ট ল্যাব ড্যাশবোর্ড</a>
+    </div>
+
+    <header>
+        <div class="badge-row">
+            <span class="badge">Phase 02: Mathematics for Data Science</span>
+            <span class="badge badge-green">Topic 02: Equations & Inequalities</span>
+        </div>
+        <h1>সমীকরণ ও অসমতা: অ্যালগো ট্রেডিংয়ের শর্ত ও রিস্ক ম্যানেজমেন্ট</h1>
+        <p class="subtitle">
+            বীজগণিতের সমীকরণ (Equations) এবং অসমতা (Inequalities) দিয়ে কীভাবে ট্রেডের সঠিক সাইজ, ব্রেক-ইভেন প্রাইস এবং রিস্ক ফিল্টারিং করতে হয় তার সহজ ও কার্যকর গাইড।
+        </p>
+    </header>
+
+    <!-- SECTION 1 -->
+    <section>
+        <h2><span class="step-num">০১</span> সমীকরণ ও অসমতা আসলে ট্রেডিংয়ে কী করে?</h2>
+        <p>
+            সাধারণ মানুষ মনে করে সমীকরণ মানে শুধু স্কুলের খাতার \(x + y = 10\)। কিন্তু অ্যালগরিদমিক ট্রেডিংয়ে প্রতিটি মুহূর্তে কম্পিউটার সমীকরণ এবং অসমতা দিয়ে দুটি মূল প্রশ্নের উত্তর খোঁজে:
+        </p>
+        <ul>
+            <li><strong>সমীকরণ (Equation - সমান বা = চিহ্ন):</strong> <em>"আমাকে ঠিক কত সাইজের লট নিতে হবে যাতে আমার ১% এর বেশি ক্ষতি না হয়?"</em> অথবা <em>"ব্রোকারের ফি কাটার পর কত দামে বেচলে আমার ১ পয়সাও লস হবে না?"</em></li>
+            <li><strong>অসমতা (Inequality - \(\ge\) বা \(\le\) চিহ্ন):</strong> <em>"এই ট্রেডের রিস্ক-রিওয়ার্ড কি ২ এর বেশি বা সমান? (\(RR \ge 2.0\))"</em> অথবা <em>"আমার অ্যাকাউন্টের ইকুইটি কি লিকুইডেশনের মার্জিনের চেয়ে বেশি আছে? (\(\text{Equity} \ge \text{Margin}\))"</em></li>
+        </ul>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section>
+        <h2><span class="step-num">০২</span> ট্রেডিংয়ের মূল সমীকরণ (Equations)</h2>
+        
+        <h3>১. ব্রেক-ইভেন সমীকরণ (Break-Even Equation with Fees)</h3>
+        <p>
+            আমরা যদি ১০০ ডলারে কোনো শেয়ার কিনি এবং ১০০ ডলারেই বিক্রি করি, তবে কিন্তু লাভ-লস শূন্য হয় না! ব্রোকার কেনার সময় এবং বেচার সময় ট্রেডিং ফি কাটে। 
+            তাহলে ঠিক কত দামে বিক্রি করলে লস ০ হবে?
+        </p>
+        <div class="formula-box">
+            \[ \text{Exit Price} = \text{Entry Price} \times \frac{1 + \text{Fee Rate}}{1 - \text{Fee Rate}} \]
+        </div>
+        <p>
+            ধরা যাক ফি হলো ০.১% (\(0.001\))। ১০০ ডলারে এন্ট্রি নিলে ব্রেক-ইভেন এক্সিট হবে \(100 \times \frac{1.001}{0.999} = 100.20\) ডলার! অর্থাৎ ০.২০ ডলার দাম না বাড়লে আপনি প্রফিটে নেই।
+        </p>
+
+        <h3>২. পজিশন সাইজিং সমীকরণ (Position Sizing Equation)</h3>
+        <p>
+            একজন ভালো ট্রেডারের অ্যাকাউন্ট কখনও জিরো হয় না কারণ সে প্রতিটি ট্রেডে মাত্র ১% রিস্ক নেয়। আপনার পজিশন সাইজ (কতগুলো শেয়ার কিনবেন) ঠিক করার সমীকরণ:
+        </p>
+        <div class="formula-box">
+            \[ \text{Position Size} = \frac{\text{Account Capital} \times \text{Risk Percentage}}{\text{Entry Price} - \text{Stop Loss Price}} \]
+        </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section>
+        <h2><span class="step-num">০৩</span> ট্রেডিংয়ের ফিল্টারিং অসমতা (Inequalities)</h2>
+        <p>
+            অ্যালগো ট্রেডিং বট সারাদিন হাজার হাজার সিগন্যাল পায়, কিন্তু সবগুলো সিগন্যালে ট্রেড নেয় না। বট অসমতা (Inequalities) দিয়ে সিগন্যাল ফিল্টার করে:
+        </p>
+
+        <h3>১. রিস্ক-রিওয়ার্ড অসমতা (Risk-Reward Filter):</h3>
+        <div class="formula-box">
+            \[ \text{Risk-Reward Ratio} = \frac{\text{Take Profit} - \text{Entry}}{\text{Entry} - \text{Stop Loss}} \ge 1.5 \]
+        </div>
+        <p>
+            যদি লাভ ও লসের অনুপাত ১.৫ এর কম হয়, অ্যালগো বট সেই ট্রেড বাতিল (Skip) করে দেবে।
+        </p>
+
+        <h3>২. মার্জিন ও লিকুইডেশন সুরক্ষা অসমতা:</h3>
+        <div class="formula-box">
+            \[ \text{Account Equity} \ge \text{Maintenance Margin} \]
+        </div>
+        <p>
+            লেভারেজ ট্রেডিংয়ে ইকুইটি যখনই মেইনটেন্যান্স মার্জিনের নিচে নেমে যায়, তখনি লিকুইডেশন ঘটে। বট সর্বদা অসমতা চেক করে মার্জিন হেলথ নিশ্চিত করে।
+        </p>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section>
+        <h2><span class="step-num">০৪</span> মেশিন লার্নিংয়ে সমীকরণ ও অসমতা</h2>
+        <p>
+            মেশিন লার্নিংয়ের বাইনারি ক্লাসিফিকেশন (যেমন: প্রাইজ কি বাড়বে নাকি কমবে?) মূলত একটি সরল অসমতা দিয়ে নির্ধারিত হয়:
+        </p>
+        <div class="formula-box">
+            \[ w_1 x_1 + w_2 x_2 + b \ge 0 \implies \text{BUY (Long)} \]
+            \[ w_1 x_1 + w_2 x_2 + b < 0 \implies \text{SELL (Short)} \]
+        </div>
+        <p>
+            একে বলা হয় <strong>Decision Boundary (সিদ্ধান্তের সীমানা)</strong>।
+        </p>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section>
+        <h2><span class="step-num">০৫</span> এবার প্রজেক্ট ল্যাবে টেস্ট করার পালা</h2>
+        <p>
+            আমরা এই সবগুলো সমীকরণ ও অসমতা দিয়ে একটি বাস্তবসম্মত, সংক্ষিপ্ত ট্রেডিং রিস্ক ইঞ্জিন তৈরি করব। 
+            কোডগুলো ধাপে ধাপে `main.py`-তে রান করে আউটপুট দেখে নিন।
+        </p>
+        <a href="./Project/index.html" class="btn-action">প্রজেক্ট ল্যাব ড্যাশবোর্ড খুলুন →</a>
+    </section>
+</div>
+
+</body>
+</html>

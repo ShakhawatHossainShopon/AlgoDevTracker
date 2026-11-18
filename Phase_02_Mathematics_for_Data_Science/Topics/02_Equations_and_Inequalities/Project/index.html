@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রজেক্ট ল্যাব: ট্রেডিং সমীকরণ ও অসমতা ইঞ্জিন</title>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-subtle: #f1f5f9;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --accent-border: #bfdbfe;
+            --text-main: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-subtle: #cbd5e1;
+            --tag-bg: #e0f2fe;
+            --tag-text: #0369a1;
+            --success-bg: #ecfdf5;
+            --success-border: #a7f3d0;
+            --success-text: #065f46;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Hind Siliguri", "Kalpurush", sans-serif;
+            background-color: var(--bg);
+            color: var(--text-body);
+            line-height: 1.8;
+            padding: 2.5rem 1rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: var(--surface-subtle);
+            border-color: var(--border-subtle);
+        }
+
+        header {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 6px solid var(--accent);
+            border-radius: 12px;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .badge-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        h1 {
+            color: var(--text-main);
+            font-size: 1.75rem;
+            font-weight: 800;
+            line-height: 1.4;
+            margin-bottom: 0.6rem;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 2px solid var(--surface-subtle);
+            padding-bottom: 0.5rem;
+        }
+
+        .file-tree-box {
+            background: #f8fafc;
+            border: 1px dashed var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.2rem 1.4rem;
+            font-family: monospace;
+            font-size: 0.92rem;
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .callout {
+            padding: 1.1rem 1.3rem;
+            border-radius: 8px;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            border-left: 4px solid;
+        }
+
+        .callout-info {
+            background: var(--accent-light);
+            border-left-color: var(--accent);
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="../../../index.html" class="nav-link">← মাস্টার সিলেবাস ড্যাশবোর্ড</a>
+        <a href="../index.html" class="nav-link">📖 থিওরি ও কনসেপ্ট গাইড</a>
+    </div>
+
+    <header>
+        <div class="badge-row">
+            <span class="badge">Phase 02: Topic 02</span>
+            <span class="badge badge-green">Equations & Inequalities Lab</span>
+        </div>
+        <h1>ট্রেডিং সমীকরণ ও অসমতা ইঞ্জিন</h1>
+        <p class="subtitle">
+            ব্রেক-ইভেন প্রাইস সমীকরণ, ১% রিস্ক পজিশন সাইজিং এবং ভেক্টরাইজড রিস্ক-রিওয়ার্ড অসমতা ফিল্টারিং ল্যাব।
+        </p>
+    </header>
+
+    <div class="card">
+        <h2>প্রজেক্ট ফাইলসমূহ</h2>
+        <div class="file-tree-box">
+            📁 Project/<br>
+            ├── 🐍 <strong>main.py</strong> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ধাপে ধাপে কোড রান ও টেস্ট করার ওয়ার্কস্পেস)</span><br>
+            ├── 💡 <strong>applied.py</strong> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(সম্পূর্ণ কাজ করা রেফারেন্স সমাধান)</span><br>
+            └── 📝 <strong>instructions.md</strong> <span>&nbsp;&nbsp;&nbsp;(সংক্ষিপ্ত নির্দেশিকা)</span>
+        </div>
+        <div class="callout callout-info">
+            <strong>কাজের পদ্ধতি:</strong> আমরা <code>main.py</code>-এ ধাপে ধাপে কোড যোগ করব। আপনি টার্মিনালে রান করে আউটপুট পর্যবেক্ষণ করবেন।
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

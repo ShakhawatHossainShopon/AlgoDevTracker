@@ -1,0 +1,37 @@
+[
+  {
+    "symbol": "us30",
+    "bid": "39520.10",
+    "ask": "39522.40",
+    "volume": 250,
+    "timestamp": 1700000001
+  },
+  {
+    "symbol": "US30",
+    "bid": 39523.00,
+    "ask": 39521.50,
+    "volume": 180,
+    "timestamp": 1700000002
+  },
+  {
+    "symbol": "us30",
+    "bid": "39525.00",
+    "ask": "39527.20",
+    "volume": 0,
+    "timestamp": 1700000003
+  },
+  {
+    "symbol": "US30",
+    "bid": 39530.00,
+    "ask": 39595.00,
+    "volume": 120,
+    "timestamp": 1700000003
+  },
+  {
+    "symbol": "us30",
+    "bid": "39535.50",
+    "ask": "39537.00",
+    "volume": 310,
+    "timestamp": 1700000005
+  }
+]

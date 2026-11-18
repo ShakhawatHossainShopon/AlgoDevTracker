@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 03: Functions and Graphs in Algo Trading</title>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-subtle: #f1f5f9;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --accent-border: #bfdbfe;
+            --text-main: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-subtle: #cbd5e1;
+            --tag-bg: #e0f2fe;
+            --tag-text: #0369a1;
+            --success-bg: #ecfdf5;
+            --success-border: #a7f3d0;
+            --success-text: #065f46;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Hind Siliguri", "Kalpurush", sans-serif;
+            background-color: var(--bg);
+            color: var(--text-body);
+            line-height: 1.8;
+            padding: 2.5rem 1rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: var(--surface-subtle);
+            border-color: var(--border-subtle);
+        }
+
+        header {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 6px solid var(--accent);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .badge-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        h1 {
+            color: var(--text-main);
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.35;
+            margin-bottom: 0.8rem;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 2px solid var(--surface-subtle);
+            padding-bottom: 0.6rem;
+        }
+
+        h3 {
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 1.4rem 0 0.6rem 0;
+        }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .callout {
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.2rem 0;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            border-left: 4px solid;
+        }
+
+        .callout-info {
+            background: var(--accent-light);
+            border-left-color: var(--accent);
+            color: #1e40af;
+        }
+
+        pre {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem 1.4rem;
+            overflow-x: auto;
+            font-family: "Consolas", monospace;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            color: #0f172a;
+        }
+
+        code {
+            font-family: "Consolas", monospace;
+            background: #f1f5f9;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #0f172a;
+        }
+
+        .btn-action {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.85rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn-action:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="../../index.html" class="nav-link">← মাস্টার সিলেবাস ড্যাশবোর্ড</a>
+        <a href="./Project/index.html" class="nav-link">🚀 প্রজেক্ট ল্যাব ড্যাশবোর্ড</a>
+    </div>
+
+    <header>
+        <div class="badge-row">
+            <span class="badge">Phase 02: Mathematics for Data Science</span>
+            <span class="badge badge-green">Topic 03: Functions & Graphs</span>
+        </div>
+        <h1>ফাংশন ও গ্রাফ: ট্রেডিং পেঅফ ও ভিজ্যুয়ালাইজেশন</h1>
+        <p class="subtitle">
+            গণিতের ফাংশন আর পাইথনের ফাংশন একই জিনিস! কীভাবে প্রাইস পরিবর্তন হলে লাভ-লস পরিবর্তিত হয় (Payoff Function) এবং চার্টে তা গ্রাফ হিসেবে ফুটে ওঠে তার সহজ পাঠ।
+        </p>
+    </header>
+
+    <section>
+        <h2><span class="step-num">০১</span> একজন প্রোগ্রামারের চোখে ফাংশন কী?</h2>
+        <p>
+            গণিতের খাতার \(y = f(x)\) আর পাইথনের <code>def calculate(x): return y</code> হুবহু এক জিনিস!
+        </p>
+        <ul>
+            <li><strong>ইনপুট (\(x\)):</strong> মার্কেটের ক্যান্ডেল প্রাইস (যেমন: ১০০, ১০৫, ৯৫)।</li>
+            <li><strong>ফাংশন (\(f\)):</strong> আপনার ট্রেডিংয়ের নিয়ম বা ফর্মুলা (যেমন: লাভ = প্রাইজ - এন্ট্রি)।</li>
+            <li><strong>আউটপুট (\(y\)):</strong> চূড়ান্ত ফলাফল বা লাভ-লস (PnL)।</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2><span class="step-num">০২</span> ট্রেডিং পেঅফ ফাংশন (Payoff Function)</h2>
+        <p>
+            আপনি যদি ১০০ ডলারে একটি শেয়ার কেনেন:
+        </p>
+        <pre><code>def calculate_pnl(current_price):
+    entry_price = 100
+    shares = 10
+    return (current_price - entry_price) * shares</code></pre>
+        <ul>
+            <li>প্রাইজ ১১০ হলে \(\to\) লাভ \(+১০০\) ডলার।</li>
+            <li>প্রাইজ ৯০ হলে \(\to\) লস \(-১০০\) ডলার।</li>
+        </ul>
+        <p>
+            ইনপুট প্রাইসের পরিবর্তনের সাথে সাথে আউটপুট প্রফিটের যে সরলরেখা তৈরি হয়, সেটাই ট্রেডিংয়ের <strong>পেঅফ গ্রাফ (Payoff Graph)</strong>।
+        </p>
+    </section>
+
+    <section>
+        <h2><span class="step-num">০৩</span> মেশিন লার্নিংয়ের অ্যাক্টিভেশন ফাংশন (ReLU)</h2>
+        <p>
+            মেশিন লার্নিংয়ে সবচেয়ে জনপ্রিয় ফাংশন হলো <strong>ReLU</strong>। এর কাজ একদম পানির মতো সোজা:
+        </p>
+        <pre><code>def relu(x):
+    return max(0, x)</code></pre>
+        <p>
+            ইনপুট পজিটিভ হলে আউটপুট যেমন আছে তেমনই থাকবে। কিন্তু নেগেটিভ হলে আউটপুট হয়ে যাবে ০! ট্রেডিংয়ে শুধু প্রফিটেবল সেটআপ ফিল্টার করতে এই ফাংশন ব্যাপকভাবে ব্যবহৃত হয়।
+        </p>
+    </section>
+
+    <section>
+        <h2><span class="step-num">০৪</span> প্রজেক্টে হাত দেওয়ার সময়</h2>
+        <p>
+            এই সহজ ৩টি কনসেপ্ট (পেঅফ ফাংশন, বিভিন্ন প্রাইস পয়েন্টে গ্রাফ টেস্ট, এবং ফিল্টার ফাংশন) দিয়ে আমরা ধাপে ধাপে কোড রান করব।
+        </p>
+        <a href="./Project/index.html" class="btn-action">প্রজেক্ট ল্যাব ড্যাশবোর্ড খুলুন →</a>
+    </section>
+</div>
+
+</body>
+</html>
