@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Complete Data Science & Quantitative Algorithmic Trading Syllabus Tracker with MongoDB Atlas Sync",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo 'Build complete'"
   },
   "dependencies": {
     "mongodb": "^7.9.0"
