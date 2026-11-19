@@ -277,13 +277,30 @@ ul, ol {
 li {
     margin-bottom: 0.35rem;
 }
-code {
+:not(pre) > code {
     font-family: "Consolas", monospace;
     background: var(--surface-subtle);
     padding: 0.15rem 0.35rem;
     border-radius: 4px;
     font-size: 0.84em;
     color: #0f172a;
+}
+pre code,
+.code-container pre code,
+.terminal-box pre code,
+.terminal-box code {
+    font-family: "Consolas", "Fira Code", monospace;
+    background: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    font-size: inherit !important;
+}
+.terminal-box pre {
+    background: transparent !important;
+    color: #e2e8f0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 """
 
