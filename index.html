@@ -356,7 +356,48 @@
             margin-top: 1.5rem;
             font-weight: 500;
         }
-</style>
+
+        /* Responsive Mobile First Tweaks */
+        @media (max-width: 768px) {
+            body { padding: 0.75rem 0.5rem; font-size: 14px; line-height: 1.5; }
+            .container { max-width: 100%; width: 100%; }
+            .sticky-tracker-bar {
+                padding: 0.6rem 0.75rem; border-radius: 8px; margin-bottom: 0.85rem;
+                flex-direction: column; align-items: stretch; gap: 0.45rem;
+            }
+            .tracker-stats {
+                width: 100%; display: flex; justify-content: space-between; gap: 0.35rem; font-size: 0.76rem;
+            }
+            .stat-badge { padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 5px; flex: 1; text-align: center; }
+            .progress-outer { width: 100%; max-width: 100%; min-width: 100%; height: 8px; border-radius: 4px; margin: 0; }
+            .tracker-actions { width: 100%; display: flex; justify-content: space-between; gap: 0.5rem; }
+            .tracker-btn { flex: 1; padding: 0.3rem 0.5rem; font-size: 0.74rem; text-align: center; }
+            header { padding: 1.25rem 1rem; border-radius: 8px; margin-bottom: 0.85rem; border-left-width: 4px; }
+            header h1 { font-size: 1.25rem; line-height: 1.35; margin-bottom: 0.4rem; }
+            .phase-card, .section-card { padding: 0.85rem 0.75rem; border-radius: 8px; margin-bottom: 0.85rem; }
+            .phase-title, .section-card h2 { font-size: 1.12rem; padding-bottom: 0.4rem; margin-bottom: 0.75rem; }
+            .topic-item {
+                flex-direction: column; align-items: stretch; padding: 0.6rem 0.65rem;
+                margin-bottom: 0.45rem; gap: 0.45rem; border-radius: 6px;
+            }
+            .topic-name {
+                margin-right: 0; font-size: 0.86rem; line-height: 1.45;
+                display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.35rem;
+            }
+            .topic-link-badge { margin-left: auto; font-size: 0.7rem; padding: 0.15rem 0.45rem; }
+            .radio-checker-group {
+                width: 100%; display: flex; justify-content: space-between;
+                padding: 2px; border-radius: 6px; background: #e2e8f0;
+            }
+            .radio-label { flex: 1; display: flex; justify-content: center; text-align: center; }
+            .radio-label span { width: 100%; text-align: center; padding: 5px 2px; font-size: 0.72rem; border-radius: 5px; display: block; }
+            .project-row { flex-direction: column; align-items: stretch; padding: 0.75rem 0.75rem; gap: 0.5rem; border-left-width: 4px; }
+            .project-info { font-size: 0.86rem; line-height: 1.45; }
+            .project-row .radio-checker-group { width: 100%; }
+            table { display: block; overflow-x: auto; white-space: nowrap; font-size: 0.78rem; }
+        }
+    </style>
+
 </head>
 <body><div class="container"><div class="sticky-tracker-bar">
 <div class="tracker-stats">
@@ -379,7 +420,13 @@
 <div class="meta-box">
 <strong>Approach:</strong> Python → Mathematics → Statistics → Data Analysis → Machine Learning → Deep Learning → Quantitative Research → Strategy Development → Deployment.
         </div>
-</header><div class="phase-card">
+
+        <div class="sync-container" style="margin-top: 0.65rem;">
+            <span id="cloud-sync-status" style="display:inline-flex; align-items:center; gap:0.35rem; font-size:0.8rem; font-weight:700; padding:0.25rem 0.75rem; border-radius:20px; background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0;">
+                🟢 Cloud Synced (MongoDB Atlas)
+            </span>
+        </div>
+    </header><div class="phase-card">
 <div class="phase-title">PHASE 01 — Python for Data Science</div>
 <ol class="topics-list">
 <li class="topic-item status-done" data-id="p01_t01">
@@ -399,11 +446,11 @@
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t02">
-<span class="topic-name"><strong>02.</strong> Variables and Data Types</span>
+<li class="topic-item status-pending" data-id="p01_t02">
+<span class="topic-name"><strong>02.</strong> Variables and Data Types <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/02_Variables_and_Data_Types/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t02" type="radio" value="pending"/>
+<input checked="" name="p01_t02" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -411,16 +458,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t02" type="radio" value="done"/>
+<input name="p01_t02" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t03">
-<span class="topic-name"><strong>03.</strong> Lists, Tuples, Sets and Dictionaries</span>
+<li class="topic-item status-pending" data-id="p01_t03">
+<span class="topic-name"><strong>03.</strong> Lists, Tuples, Sets and Dictionaries <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/03_Lists_Tuples_Sets_and_Dictionaries/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t03" type="radio" value="pending"/>
+<input checked="" name="p01_t03" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -428,16 +475,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t03" type="radio" value="done"/>
+<input name="p01_t03" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t04">
-<span class="topic-name"><strong>04.</strong> Conditional Statements</span>
+<li class="topic-item status-pending" data-id="p01_t04">
+<span class="topic-name"><strong>04.</strong> Conditional Statements <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/04_Conditional_Statements/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t04" type="radio" value="pending"/>
+<input checked="" name="p01_t04" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -445,16 +492,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t04" type="radio" value="done"/>
+<input name="p01_t04" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t05">
-<span class="topic-name"><strong>05.</strong> Loops</span>
+<li class="topic-item status-pending" data-id="p01_t05">
+<span class="topic-name"><strong>05.</strong> Loops <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/05_Loops/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t05" type="radio" value="pending"/>
+<input checked="" name="p01_t05" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -462,16 +509,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t05" type="radio" value="done"/>
+<input name="p01_t05" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t06">
-<span class="topic-name"><strong>06.</strong> Functions</span>
+<li class="topic-item status-pending" data-id="p01_t06">
+<span class="topic-name"><strong>06.</strong> Functions <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/06_Functions/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t06" type="radio" value="pending"/>
+<input checked="" name="p01_t06" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -479,16 +526,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t06" type="radio" value="done"/>
+<input name="p01_t06" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t07">
-<span class="topic-name"><strong>07.</strong> Lambda Functions</span>
+<li class="topic-item status-pending" data-id="p01_t07">
+<span class="topic-name"><strong>07.</strong> Lambda Functions <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/07_Lambda_Functions/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t07" type="radio" value="pending"/>
+<input checked="" name="p01_t07" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -496,16 +543,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t07" type="radio" value="done"/>
+<input name="p01_t07" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t08">
-<span class="topic-name"><strong>08.</strong> List Comprehensions</span>
+<li class="topic-item status-pending" data-id="p01_t08">
+<span class="topic-name"><strong>08.</strong> List Comprehensions <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/08_List_Comprehensions/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t08" type="radio" value="pending"/>
+<input checked="" name="p01_t08" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -513,16 +560,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t08" type="radio" value="done"/>
+<input name="p01_t08" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t09">
-<span class="topic-name"><strong>09.</strong> File Handling</span>
+<li class="topic-item status-pending" data-id="p01_t09">
+<span class="topic-name"><strong>09.</strong> File Handling <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/09_File_Handling/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t09" type="radio" value="pending"/>
+<input checked="" name="p01_t09" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -530,16 +577,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t09" type="radio" value="done"/>
+<input name="p01_t09" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t10">
-<span class="topic-name"><strong>10.</strong> Exception Handling</span>
+<li class="topic-item status-pending" data-id="p01_t10">
+<span class="topic-name"><strong>10.</strong> Exception Handling <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/10_Exception_Handling/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t10" type="radio" value="pending"/>
+<input checked="" name="p01_t10" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -547,16 +594,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t10" type="radio" value="done"/>
+<input name="p01_t10" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t11">
-<span class="topic-name"><strong>11.</strong> Object-Oriented Programming</span>
+<li class="topic-item status-pending" data-id="p01_t11">
+<span class="topic-name"><strong>11.</strong> Object-Oriented Programming <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/11_Object_Oriented_Programming/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t11" type="radio" value="pending"/>
+<input checked="" name="p01_t11" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -564,16 +611,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t11" type="radio" value="done"/>
+<input name="p01_t11" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t12">
-<span class="topic-name"><strong>12.</strong> Modules and Packages</span>
+<li class="topic-item status-pending" data-id="p01_t12">
+<span class="topic-name"><strong>12.</strong> Modules and Packages <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/12_Modules_and_Packages/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t12" type="radio" value="pending"/>
+<input checked="" name="p01_t12" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -581,16 +628,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t12" type="radio" value="done"/>
+<input name="p01_t12" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t13">
-<span class="topic-name"><strong>13.</strong> Virtual Environments</span>
+<li class="topic-item status-pending" data-id="p01_t13">
+<span class="topic-name"><strong>13.</strong> Virtual Environments <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/13_Virtual_Environments/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t13" type="radio" value="pending"/>
+<input checked="" name="p01_t13" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -598,16 +645,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t13" type="radio" value="done"/>
+<input name="p01_t13" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t14">
-<span class="topic-name"><strong>14.</strong> Working with APIs</span>
+<li class="topic-item status-pending" data-id="p01_t14">
+<span class="topic-name"><strong>14.</strong> Working with APIs <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/14_Working_with_APIs/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t14" type="radio" value="pending"/>
+<input checked="" name="p01_t14" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -615,16 +662,16 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t14" type="radio" value="done"/>
+<input name="p01_t14" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
-<li class="topic-item status-done" data-id="p01_t15">
-<span class="topic-name"><strong>15.</strong> Data Serialization (JSON, CSV)</span>
+<li class="topic-item status-pending" data-id="p01_t15">
+<span class="topic-name"><strong>15.</strong> Data Serialization (JSON, CSV) <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Topics/15_Data_Serialization_JSON_CSV/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_t15" type="radio" value="pending"/>
+<input checked="" name="p01_t15" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="Currently Studying">
@@ -632,19 +679,20 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_t15" type="radio" value="done"/>
+<input name="p01_t15" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
 </li>
 </ol>
-<div class="projects"><div class="project-row project-trading status-done" data-id="p01_proj01">
+<div class="projects"><div class="project-row project-trading status-pending" data-id="p01_proj01">
 <div class="project-info">
 <strong>Capstone Project (Trading):</strong> Build an MT5 historical market data collector using Python.
+                     <a class="topic-link-badge" href="Phase_01_Python_for_Data_Science/Projects/Project_Trading_MT5_Historical_Market_Data_Collector/README.md">📋 Capstone Spec</a>
                     </div>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
-<input name="p01_proj01" type="radio" value="pending"/>
+<input checked="" name="p01_proj01" type="radio" value="pending"/>
 <span>⚪ Pending</span>
 </label>
 <label class="radio-label radio-working" title="In Progress">
@@ -652,7 +700,7 @@
 <span>🟡 Working</span>
 </label>
 <label class="radio-label radio-done" title="Completed">
-<input checked="" name="p01_proj01" type="radio" value="done"/>
+<input name="p01_proj01" type="radio" value="done"/>
 <span>🟢 Done</span>
 </label>
 </div>
@@ -712,7 +760,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t04">
-<span class="topic-name"><strong>04.</strong> Exponents and Logarithms</span>
+<span class="topic-name"><strong>04.</strong> Exponents and Logarithms <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/04_Exponents_and_Logarithms/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t04" type="radio" value="pending"/>
@@ -729,7 +777,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t05">
-<span class="topic-name"><strong>05.</strong> Sequences and Series</span>
+<span class="topic-name"><strong>05.</strong> Sequences and Series <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/05_Sequences_and_Series/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t05" type="radio" value="pending"/>
@@ -746,7 +794,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t06">
-<span class="topic-name"><strong>06.</strong> Linear Algebra Fundamentals</span>
+<span class="topic-name"><strong>06.</strong> Linear Algebra Fundamentals <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/06_Linear_Algebra_Fundamentals/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t06" type="radio" value="pending"/>
@@ -763,7 +811,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t07">
-<span class="topic-name"><strong>07.</strong> Vectors</span>
+<span class="topic-name"><strong>07.</strong> Vectors <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/07_Vectors/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t07" type="radio" value="pending"/>
@@ -780,7 +828,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t08">
-<span class="topic-name"><strong>08.</strong> Matrices</span>
+<span class="topic-name"><strong>08.</strong> Matrices <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/08_Matrices/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t08" type="radio" value="pending"/>
@@ -797,7 +845,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t09">
-<span class="topic-name"><strong>09.</strong> Matrix Operations</span>
+<span class="topic-name"><strong>09.</strong> Matrix Operations <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/09_Matrix_Operations/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t09" type="radio" value="pending"/>
@@ -814,7 +862,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t10">
-<span class="topic-name"><strong>10.</strong> Matrix Multiplication</span>
+<span class="topic-name"><strong>10.</strong> Matrix Multiplication <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/10_Matrix_Multiplication/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t10" type="radio" value="pending"/>
@@ -831,7 +879,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t11">
-<span class="topic-name"><strong>11.</strong> Determinants</span>
+<span class="topic-name"><strong>11.</strong> Determinants <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/11_Determinants/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t11" type="radio" value="pending"/>
@@ -848,7 +896,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t12">
-<span class="topic-name"><strong>12.</strong> Eigenvalues and Eigenvectors</span>
+<span class="topic-name"><strong>12.</strong> Eigenvalues and Eigenvectors <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/12_Eigenvalues_and_Eigenvectors/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t12" type="radio" value="pending"/>
@@ -865,7 +913,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t13">
-<span class="topic-name"><strong>13.</strong> Differentiation</span>
+<span class="topic-name"><strong>13.</strong> Differentiation <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/13_Differentiation/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t13" type="radio" value="pending"/>
@@ -882,7 +930,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t14">
-<span class="topic-name"><strong>14.</strong> Integration</span>
+<span class="topic-name"><strong>14.</strong> Integration <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/14_Integration/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t14" type="radio" value="pending"/>
@@ -899,7 +947,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t15">
-<span class="topic-name"><strong>15.</strong> Partial Derivatives</span>
+<span class="topic-name"><strong>15.</strong> Partial Derivatives <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/15_Partial_Derivatives/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t15" type="radio" value="pending"/>
@@ -916,7 +964,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t16">
-<span class="topic-name"><strong>16.</strong> Optimization</span>
+<span class="topic-name"><strong>16.</strong> Optimization <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/16_Optimization/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t16" type="radio" value="pending"/>
@@ -933,7 +981,7 @@
 </div>
 </li>
 <li class="topic-item" data-id="p02_t17">
-<span class="topic-name"><strong>17.</strong> Gradient Fundamentals</span>
+<span class="topic-name"><strong>17.</strong> Gradient Fundamentals <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Topics/17_Gradient_Fundamentals/index.html">📖 Study Guide</a></span>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
 <input checked="" name="p02_t17" type="radio" value="pending"/>
@@ -953,6 +1001,7 @@
 <div class="projects"><div class="project-row project-trading" data-id="p02_proj01">
 <div class="project-info">
 <strong>Capstone Project (Trading):</strong> Develop a return, volatility and portfolio mathematics calculator for financial assets.
+                     <a class="topic-link-badge" href="Phase_02_Mathematics_for_Data_Science/Projects/Project_Trading_Return_Volatility_Portfolio_Math_Calculator/README.md">📋 Capstone Spec</a>
                     </div>
 <div class="radio-checker-group">
 <label class="radio-label radio-pending" title="Not Started">
@@ -6419,28 +6468,84 @@
 <strong>Important:</strong> Build strong statistical and data science foundations before moving into advanced ML or deep learning. A profitable backtest does not guarantee future profitability. Always account for transaction costs, look-ahead bias, overfitting and out-of-sample performance.
         </div>
 </div></div><script>
-const STORAGE_KEY = 'ml_syllabus_tracker_state_v1';
+const STORAGE_KEY = 'algotrading_syllabus_tracker_state_v1';
+let syncStatusEl = null;
+
+function setSyncIndicator(status, text) {
+    if (!syncStatusEl) {
+        syncStatusEl = document.getElementById('cloud-sync-status');
+    }
+    if (syncStatusEl) {
+        syncStatusEl.textContent = text;
+        if (status === 'syncing') {
+            syncStatusEl.style.background = '#fffbeb';
+            syncStatusEl.style.color = '#92400e';
+            syncStatusEl.style.borderColor = '#fde68a';
+        } else if (status === 'done') {
+            syncStatusEl.style.background = '#ecfdf5';
+            syncStatusEl.style.color = '#065f46';
+            syncStatusEl.style.borderColor = '#a7f3d0';
+        } else {
+            syncStatusEl.style.background = '#f1f5f9';
+            syncStatusEl.style.color = '#475569';
+            syncStatusEl.style.borderColor = '#cbd5e1';
+        }
+    }
+}
 
 function getStoredState() {
     try {
         let s = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (!s) {
-        s = {};
-        for (let i = 1; i <= 15; i++) {
-            let id = 'p01_t' + String(i).padStart(2, '0');
-            s[id] = 'done';
+        if (!s) {
+            s = { 'p01_t01': 'done' };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
         }
-        s['p01_proj01'] = 'done';
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
-    }
-    return s;
+        return s;
     } catch (e) {
-        return {};
+        return { 'p01_t01': 'done' };
     }
 }
 
 function saveState(state) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+async function fetchRemoteState() {
+    try {
+        setSyncIndicator('syncing', '🟡 Syncing with MongoDB...');
+        const res = await fetch('/api/status');
+        if (res.ok) {
+            const json = await res.json();
+            if (json.success && json.data) {
+                const local = getStoredState();
+                const merged = Object.assign({}, local, json.data);
+                saveState(merged);
+                updateUI();
+                setSyncIndicator('done', '🟢 Cloud Synced (MongoDB Atlas)');
+                return;
+            }
+        }
+    } catch (err) {
+        console.warn('API sync warning (using localStorage offline):', err);
+    }
+    setSyncIndicator('offline', '⚪ Offline / Cached State');
+}
+
+async function pushRemoteState(id, status) {
+    try {
+        setSyncIndicator('syncing', '🟡 Saving to Cloud...');
+        const res = await fetch('/api/status', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, status })
+        });
+        if (res.ok) {
+            setSyncIndicator('done', '🟢 Cloud Synced (MongoDB Atlas)');
+        }
+    } catch (err) {
+        console.warn('Failed to push to remote:', err);
+        setSyncIndicator('offline', '⚪ Saved Locally (Offline)');
+    }
 }
 
 function updateUI() {
@@ -6497,6 +6602,7 @@ function onRadioChange(e) {
         state[name] = val;
         saveState(state);
         updateUI();
+        pushRemoteState(name, val);
     }
 }
 
@@ -6511,13 +6617,14 @@ function exportTracker() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(getStoredState(), null, 2));
     const dlAnchorElem = document.createElement('a');
     dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", "ml_progress_backup.json");
+    dlAnchorElem.setAttribute("download", "algotrading_progress_backup.json");
     dlAnchorElem.click();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('change', onRadioChange);
     updateUI();
+    fetchRemoteState();
 });
 </script></body>
 </html>

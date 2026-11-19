@@ -1,0 +1,11 @@
+{
+  "name": "algotrading-tracker",
+  "version": "1.0.0",
+  "description": "Complete Data Science & Quantitative Algorithmic Trading Syllabus Tracker with MongoDB Atlas Sync",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "mongodb": "^7.9.0"
+  }
+}

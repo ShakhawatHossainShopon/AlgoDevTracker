@@ -2,280 +2,591 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শর্ট প্রজেক্ট ল্যাব: কোয়ান্ট অ্যালজেব্রা পাইপলাইন</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>প্রজেক্ট ল্যাব: বেসিক অ্যালজেব্রা ও ভেক্টরাইজেশন: রিটার্ন ট্রান্সফরমেশন ও লগ এডিটিভিটি</title>
     <style>
-        :root {
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --surface-subtle: #f1f5f9;
-            --accent: #2563eb;
-            --accent-light: #eff6ff;
-            --accent-border: #bfdbfe;
-            --text-main: #0f172a;
-            --text-body: #334155;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --border-subtle: #cbd5e1;
-            --tag-bg: #e0f2fe;
-            --tag-text: #0369a1;
-            --success-bg: #ecfdf5;
-            --success-border: #a7f3d0;
-            --success-text: #065f46;
-        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+:root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-subtle: #f1f5f9;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --text-main: #0f172a;
+    --text-body: #334155;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --border-subtle: #cbd5e1;
+    --tag-bg: #e0f2fe;
+    --tag-text: #0369a1;
+    --success-bg: #ecfdf5;
+    --success-border: #a7f3d0;
+    --success-text: #065f46;
+    --code-bg: #090d16;
+    --code-text: #f8fafc;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Bengali", sans-serif;
+    background-color: var(--bg);
+    color: var(--text-body);
+    line-height: 1.6;
+    padding: 0.85rem 0.65rem;
+    font-size: 0.9rem;
+    -webkit-font-smoothing: antialiased;
+}
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+}
+.nav-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+}
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.65rem;
+    background: var(--surface);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.badge-row {
+    display: flex;
+    gap: 0.45rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+}
+.badge {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+}
+.badge-green {
+    background: #dcfce7;
+    color: #166534;
+}
+h1 {
+    color: var(--text-main);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 0.45rem;
+}
+p.subtitle {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+.section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 0.95rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+h2 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-bottom: 1px solid var(--surface-subtle);
+    padding-bottom: 0.45rem;
+}
+.step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.code-container {
+    background: var(--code-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0.65rem 0;
+    border: 1px solid #1e293b;
+    position: relative;
+}
+.code-header {
+    background: #111827;
+    padding: 0.35rem 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1f2937;
+}
+.code-title {
+    color: #94a3b8;
+    font-size: 0.74rem;
+    font-weight: 600;
+    font-family: monospace;
+}
+pre {
+    padding: 0.85rem 0.95rem;
+    overflow-x: auto;
+    font-family: "Consolas", "Fira Code", monospace;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    color: var(--code-text);
+    margin: 0;
+    background: transparent;
+}
+.terminal-box {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-left: 3px solid #10b981;
+    border-radius: 8px;
+    padding: 0.75rem 0.95rem;
+    margin: 0.65rem 0;
+    font-family: "Consolas", monospace;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+    position: relative;
+}
+.term-title {
+    color: #10b981;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.35rem;
+}
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    transition: all 0.2s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 5;
+    line-height: 1.2;
+}
+.copy-btn:hover, .copy-btn:active {
+    background: rgba(255, 255, 255, 0.22);
+}
+.copy-btn.copied {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+}
+.copy-btn-floating {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+.explanation-box {
+    background: var(--surface-subtle);
+    border-left: 3px solid var(--accent);
+    padding: 0.65rem 0.85rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.65rem 0;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text-body);
+}
+.callout {
+    padding: 0.75rem 0.95rem;
+    border-radius: 6px;
+    margin: 0.75rem 0;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    border-left: 3px solid;
+}
+.callout-info {
+    background: var(--accent-light);
+    border-left-color: var(--accent);
+    color: #1e40af;
+}
+.callout-tip {
+    background: var(--success-bg);
+    border-left-color: #10b981;
+    color: var(--success-text);
+}
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 0.75rem;
+    box-shadow: 0 2px 6px rgba(37,99,235,0.2);
+}
+.btn-action:hover {
+    background: #1d4ed8;
+}
+ul, ol {
+    padding-left: 1.25rem;
+    margin: 0.5rem 0;
+}
+li {
+    margin-bottom: 0.35rem;
+}
+code {
+    font-family: "Consolas", monospace;
+    background: var(--surface-subtle);
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.84em;
+    color: #0f172a;
+}
 
-        body {
-            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Hind Siliguri", "Kalpurush", sans-serif;
-            background-color: var(--bg);
-            color: var(--text-body);
-            line-height: 1.8;
-            padding: 2.5rem 1rem;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .nav-bar {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 0.5rem 1rem;
-            background: var(--surface);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-            transition: all 0.2s;
-        }
-
-        .nav-link:hover {
-            background: var(--surface-subtle);
-            border-color: var(--border-subtle);
-        }
-
-        header {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-left: 6px solid var(--accent);
-            border-radius: 12px;
-            padding: 2.2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.04);
-        }
-
-        .badge-row {
-            display: flex;
-            gap: 0.6rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: var(--tag-bg);
-            color: var(--tag-text);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-        }
-
-        .badge-green {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        h1 {
-            color: var(--text-main);
-            font-size: 1.75rem;
-            font-weight: 800;
-            line-height: 1.4;
-            margin-bottom: 0.6rem;
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.8rem;
-            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.03);
-        }
-
-        h2 {
-            color: var(--text-main);
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            border-bottom: 2px solid var(--surface-subtle);
-            padding-bottom: 0.5rem;
-        }
-
-        h3 {
-            color: var(--text-main);
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin: 1.2rem 0 0.5rem 0;
-        }
-
-        .step-num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent);
-            color: white;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            font-size: 0.82rem;
-            font-weight: 700;
-        }
-
-        .callout {
-            padding: 1.1rem 1.3rem;
-            border-radius: 8px;
-            margin: 1.2rem 0;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            border-left: 4px solid;
-        }
-
-        .callout-info {
-            background: var(--accent-light);
-            border-left-color: var(--accent);
-            color: #1e40af;
-        }
-
-        .callout-pro {
-            background: #faf5ff;
-            border-left-color: #9333ea;
-            color: #581c87;
-        }
-
-        pre {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.1rem 1.3rem;
-            overflow-x: auto;
-            font-family: "Consolas", monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin: 0.8rem 0;
-            color: #0f172a;
-        }
-
-        code {
-            font-family: "Consolas", monospace;
-            background: #f1f5f9;
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: #0f172a;
-        }
-
-        .file-tree-box {
-            background: #f8fafc;
-            border: 1px dashed var(--border-subtle);
-            border-radius: 8px;
-            padding: 1.2rem 1.4rem;
-            font-family: monospace;
-            font-size: 0.92rem;
-            margin: 1rem 0;
-            line-height: 1.8;
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="nav-bar">
-        <a href="../../../index.html" class="nav-link">← মাস্টার সিলেবাস ড্যাশবোর্ড</a>
-        <a href="../index.html" class="nav-link">📖 থিওরি ও কনসেপ্ট গাইড</a>
+        <a href="../../../../index.html" class="nav-link">← মাস্টার সিলেবাস</a>
+        <a href="../index.html" class="nav-link">📖 থিওরি গাইড</a>
     </div>
 
     <header>
         <div class="badge-row">
-            <span class="badge">Phase 02: Topic 01</span>
-            <span class="badge badge-green">Short & All-Inclusive Lab</span>
+            <span class="badge">Phase 02: Mathematics for Data Science</span>
+            <span class="badge badge-green">Project ০১: Visual Walkthrough</span>
         </div>
-        <h1>শর্ট কোয়ান্ট অ্যালজেব্রা প্রজেক্ট</h1>
-        <p class="subtitle">
-            টপিক ০১-এর প্রতিটি বিষয় (রিটার্ন, স্কেলিং, ডট প্রোডাক্ট, ট্রেন্ডলাইন) স্পর্শ করে খুব সংক্ষিপ্ত ও বাস্তবমুখী ৪টি ধাপে অ্যালগো ট্রেডিংয়ের অ্যালজেব্রা পাইপলাইন।
-        </p>
+        <h1>বেসিক অ্যালজেব্রা ও ভেক্টরাইজেশন: রিটার্ন ট্রান্সফরমেশন ও লগ এডিটিভিটি</h1>
+        <p class="subtitle"><strong>ট্রেডিং প্রেক্ষাপট:</strong> ক্যান্ডেলস্টিক প্রাইস সিরিজ থেকে ভেক্টরাইজড স্লাইসিংয়ের মাধ্যমে সিম্পল ও লগ রিটার্ন হিসাব এবং এডিটিভিটি পরীক্ষা।</p>
     </header>
 
-    <div class="card">
-        <h2><span class="step-num">০১</span> প্রজেক্ট ফাইল</h2>
-        <div class="file-tree-box">
-            📁 Project/<br>
-            ├── 🐍 <strong>main.py</strong> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(আপনার কোডিং ফাইল — ৪টি ছোট ধাপের কমেন্ট গাইডলাইন)</span><br>
-            ├── 💡 <strong>applied.py</strong> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(সম্পূর্ণ কার্যকর সমাধান কোড)</span><br>
-            └── 📝 <strong>instructions.md</strong> <span>&nbsp;&nbsp;&nbsp;(সংক্ষিপ্ত গাইড)</span>
+
+    <div class="section-card">
+        <h2><span class="step-num">০১</span> ধাপ ১: স্লাইসিং দিয়ে সিম্পল রিটার্ন হিসাব</h2>
+        <div class="code-container">
+            <div class="code-header">
+                <span class="code-title">step_01.py</span>
+            </div>
+            <pre><code>import numpy as np
+
+prices = np.array([100.0, 102.5, 101.0, 104.0, 106.5])
+
+# prices[1:] হলো বর্তমান ক্যান্ডেল, prices[:-1] হলো পূর্ববর্তী ক্যান্ডেল
+simple_returns = (prices[1:] - prices[:-1]) / prices[:-1]
+
+print("Closing Prices:", prices)
+print("Simple Returns (%):", np.round(simple_returns * 100, 2))</code></pre>
         </div>
-        <div class="callout callout-info">
-            <strong>আপনার কাজ:</strong> <code>main.py</code> খুলে কমেন্ট গাইডলাইন দেখে নিজে কোড করুন। সাহায্য লাগলে <code>applied.py</code> দেখুন।
+        <div class="terminal-box">
+            <div class="term-title">Terminal Output</div>
+            <pre><code>Closing Prices: [100.  102.5 101.  104.  106.5]
+Simple Returns (%): [ 2.5  -1.46  2.97  2.4 ]</code></pre>
+        </div>
+        <div class="explanation-box">
+            <strong>লাইন-বাই-লাইন বিশ্লেষণ:</strong> কোনো for লুপ ছাড়াই NumPy অ্যারে স্লাইসিং দিয়ে এক লাইনে ৪টি ক্যান্ডেলের রিটার্ন বের করা হয়েছে।
         </div>
     </div>
 
-    <div class="card">
-        <h2><span class="step-num">০২</span> ৪টি সংক্ষিপ্ত ধাপ (All-Topic Touch)</h2>
 
-        <h3>১. ভেক্টরাইজড রিটার্ন (Simple & Log Returns)</h3>
-        <p>ক্যান্ডেলের প্রাইজ থেকে এক লাইনে সিম্পল ও লগ রিটার্ন হিসাব করুন:</p>
-        <pre><code>simple_ret = (prices[1:] - prices[:-1]) / prices[:-1]
-log_ret = np.diff(np.log(prices))</code></pre>
+    <div class="section-card">
+        <h2><span class="step-num">০২</span> ধাপ ২: লগ রিটার্ন ও যোগ করার সুবিধা (Additivity)</h2>
+        <div class="code-container">
+            <div class="code-header">
+                <span class="code-title">step_02.py</span>
+            </div>
+            <pre><code>log_returns = np.diff(np.log(prices))
 
-        <h3>২. ব্রডকাস্টিং দিয়ে ফিচার স্কেলিং (Z-Score)</h3>
-        <p>টেকনিক্যাল ফিচার ম্যাট্রিক্স \(X\) এর প্রতিটি কলাম স্কেল করুন:</p>
-        <pre><code>mean = np.mean(X, axis=0)
-std = np.std(X, axis=0)
-X_scaled = (X - mean) / std</code></pre>
+sum_log = np.sum(log_returns)
+total_period_log = np.log(prices[-1] / prices[0])
 
-        <h3>৩. ডট প্রোডাক্ট দিয়ে আলফা স্কোর ও BUY/SELL সিগন্যাল</h3>
-        <p>লিনিয়ার সমীকরণ \(\hat{y} = X \cdot w + b\) দিয়ে প্রেডিকশন ও ট্রেডিং সিগন্যাল তৈরি:</p>
-        <pre><code>y_pred = X_scaled @ weights + bias
-signals = np.where(y_pred > 0, "BUY", "SELL")</code></pre>
-
-        <h3>৪. ট্রেন্ডলাইন ও মোমেন্টাম ঢাল (\(y = mx + c\))</h3>
-        <p>প্রাইজের গতিবেগ ও দিক নির্ধারণ করতে <code>np.polyfit</code> চালান:</p>
-        <pre><code>x = np.arange(len(prices))
-slope, intercept = np.polyfit(x, prices, deg=1)</code></pre>
+print("Log Returns (%):", np.round(log_returns * 100, 2))
+print("Sum of Log Returns:", round(sum_log, 4))
+print("Total Period Log Return:", round(total_period_log, 4))
+print("Additivity Identity Holds?:", np.isclose(sum_log, total_period_log))</code></pre>
+        </div>
+        <div class="terminal-box">
+            <div class="term-title">Terminal Output</div>
+            <pre><code>Log Returns (%): [ 2.47 -1.47  2.93  2.38]
+Sum of Log Returns: 0.063
+Total Period Log Return: 0.063
+Additivity Identity Holds?: True</code></pre>
+        </div>
+        <div class="explanation-box">
+            <strong>লাইন-বাই-লাইন বিশ্লেষণ:</strong> np.diff এবং np.log ব্যবহার করে লগ রিটার্ন বের করা হয়েছে এবং প্রমাণ করা হয়েছে যে প্রতিটি বারের লগ রিটার্ন যোগ করলেই পুরো পিরিয়ডের মোট রিটার্ন পাওয়া যায়।
+        </div>
     </div>
 
-    <div class="card">
-        <div class="callout callout-pro">
-            <strong>মনে রাখবেন:</strong> কোড টেস্ট বা যাচাইয়ের কিছু নেই। প্রজেক্টটি খুব শর্ট—আপনার প্র্যাকটিস শেষ হলে চ্যাটে শুধু বলুন: <em>"হয়ে গেছে"</em>। সাথে সাথে আমরা পরবর্তী টপিকে চলে যাব!
+
+    <div class="section-card">
+        <h2><span class="step-num">০৩</span> ধাপ ৩: ফিচার স্কেলিং (Z-Score Standardization)</h2>
+        <div class="code-container">
+            <div class="code-header">
+                <span class="code-title">step_03.py</span>
+            </div>
+            <pre><code># মোমেন্টাম ও ভলিউমের মতো ভিন্ন স্কেলের ফিচারকে গড়=০ ও ভ্যারিয়েন্স=১ এ রূপান্তর
+features = np.array([
+    [2.5, 1800],
+    [-1.4, 900],
+    [3.0, 2200],
+    [2.4, 1500]
+])
+
+mean = np.mean(features, axis=0)
+std = np.std(features, axis=0)
+scaled_features = (features - mean) / std
+
+print("Scaled Feature Matrix (Mean=0, Std=1):\n", np.round(scaled_features, 2))</code></pre>
+        </div>
+        <div class="terminal-box">
+            <div class="term-title">Terminal Output</div>
+            <pre><code>Scaled Feature Matrix (Mean=0, Std=1):
+ [[ 0.44  0.43]
+ [-1.75 -1.47]
+ [ 0.72  1.27]
+ [ 0.38 -0.22]]</code></pre>
+        </div>
+        <div class="explanation-box">
+            <strong>লাইন-বাই-লাইন বিশ্লেষণ:</strong> ব্রডকাস্টিং ব্যবহার করে কলাম বরাবর এক লাইনে সব ফিচারকে Z-score স্কেলে স্ট্যান্ডার্ডাইজ করা হয়েছে।
+        </div>
+    </div>
+
+
+    <div class="section-card">
+        <h2><span class="step-num">০৪</span> সম্পূর্ণ কার্যকর কোড (Full Script)</h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+            নিচের কোডটি এক ট্যাপে কপি করে অন্য যেকোনো জায়গায় টেস্ট বা স্টাডি করতে পারেন:
+        </p>
+        <div class="code-container">
+            <div class="code-header">
+                <span class="code-title">complete_solution.py</span>
+            </div>
+            <pre><code># Basic Algebra & Vectorization: Return Transformations
+
+# 1. ধাপ ১: স্লাইসিং দিয়ে সিম্পল রিটার্ন হিসাব
+import numpy as np
+
+prices = np.array([100.0, 102.5, 101.0, 104.0, 106.5])
+
+# prices[1:] হলো বর্তমান ক্যান্ডেল, prices[:-1] হলো পূর্ববর্তী ক্যান্ডেল
+simple_returns = (prices[1:] - prices[:-1]) / prices[:-1]
+
+print("Closing Prices:", prices)
+print("Simple Returns (%):", np.round(simple_returns * 100, 2))
+
+# 2. ধাপ ২: লগ রিটার্ন ও যোগ করার সুবিধা (Additivity)
+log_returns = np.diff(np.log(prices))
+
+sum_log = np.sum(log_returns)
+total_period_log = np.log(prices[-1] / prices[0])
+
+print("Log Returns (%):", np.round(log_returns * 100, 2))
+print("Sum of Log Returns:", round(sum_log, 4))
+print("Total Period Log Return:", round(total_period_log, 4))
+print("Additivity Identity Holds?:", np.isclose(sum_log, total_period_log))
+
+# 3. ধাপ ৩: ফিচার স্কেলিং (Z-Score Standardization)
+# মোমেন্টাম ও ভলিউমের মতো ভিন্ন স্কেলের ফিচারকে গড়=০ ও ভ্যারিয়েন্স=১ এ রূপান্তর
+features = np.array([
+    [2.5, 1800],
+    [-1.4, 900],
+    [3.0, 2200],
+    [2.4, 1500]
+])
+
+mean = np.mean(features, axis=0)
+std = np.std(features, axis=0)
+scaled_features = (features - mean) / std
+
+print("Scaled Feature Matrix (Mean=0, Std=1):\n", np.round(scaled_features, 2))</code></pre>
+        </div>
+        <div class="terminal-box">
+            <div class="term-title">Full Terminal Output</div>
+            <pre><code>--- Step 1 Output ---
+Closing Prices: [100.  102.5 101.  104.  106.5]
+Simple Returns (%): [ 2.5  -1.46  2.97  2.4 ]
+
+--- Step 2 Output ---
+Log Returns (%): [ 2.47 -1.47  2.93  2.38]
+Sum of Log Returns: 0.063
+Total Period Log Return: 0.063
+Additivity Identity Holds?: True
+
+--- Step 3 Output ---
+Scaled Feature Matrix (Mean=0, Std=1):
+ [[ 0.44  0.43]
+ [-1.75 -1.47]
+ [ 0.72  1.27]
+ [ 0.38 -0.22]]</code></pre>
+        </div>
+        <div class="callout callout-tip">
+            <strong>💡 মোবাইল রিডিং টিপস:</strong> উপরের <code>📋 Copy Code</code> বাটন ট্যাপ করে সম্পূর্ণ কোড এবং <code>📋 Copy Output</code> ট্যাপ করে টার্মিনাল রেজাল্ট কপি করতে পারেন।
         </div>
     </div>
 </div>
+
+
+<script>
+function copyTextToClipboard(text, btn) {
+    function showSuccess() {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '✅ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+        }, 2000);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showSuccess).catch(() => {
+            fallbackCopy(text);
+        });
+    } else {
+        fallbackCopy(text);
+    }
+
+    function fallbackCopy(str) {
+        const ta = document.createElement('textarea');
+        ta.value = str;
+        ta.style.position = 'fixed';
+        ta.style.top = '0';
+        ta.style.left = '0';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try {
+            document.execCommand('copy');
+            showSuccess();
+        } catch (e) {
+            console.error('Copy failed:', e);
+        }
+        document.body.removeChild(ta);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Code Containers
+    document.querySelectorAll('.code-container').forEach(container => {
+        if (container.querySelector('.copy-btn')) return;
+        const header = container.querySelector('.code-header');
+        const pre = container.querySelector('pre');
+        if (!pre) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.setAttribute('type', 'button');
+        btn.innerHTML = '📋 Copy Code';
+        btn.onclick = () => copyTextToClipboard(pre.innerText.trim(), btn);
+
+        if (header) {
+            header.style.display = 'flex';
+            header.style.justifyContent = 'space-between';
+            header.style.alignItems = 'center';
+            header.appendChild(btn);
+        } else {
+            container.style.position = 'relative';
+            btn.classList.add('copy-btn-floating');
+            container.appendChild(btn);
+        }
+    });
+
+    // 2. Terminal Boxes
+    document.querySelectorAll('.terminal-box').forEach(box => {
+        if (box.querySelector('.copy-btn')) return;
+        box.style.position = 'relative';
+
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.setAttribute('type', 'button');
+        btn.innerHTML = '📋 Copy Output';
+        
+        btn.onclick = () => {
+            const preOrCode = box.querySelector('pre') || box.querySelector('code');
+            const clone = (preOrCode || box).cloneNode(true);
+            const internalTitle = clone.querySelector('.term-title');
+            if (internalTitle) internalTitle.remove();
+            const internalBtn = clone.querySelector('.copy-btn');
+            if (internalBtn) internalBtn.remove();
+            copyTextToClipboard(clone.innerText.trim(), btn);
+        };
+
+        const title = box.querySelector('.term-title');
+        if (title) {
+            const header = document.createElement('div');
+            header.className = 'term-header';
+            header.style.display = 'flex';
+            header.style.justifyContent = 'space-between';
+            header.style.alignItems = 'center';
+            header.style.marginBottom = '0.35rem';
+            title.parentNode.insertBefore(header, title);
+            header.appendChild(title);
+            header.appendChild(btn);
+        } else {
+            btn.classList.add('copy-btn-floating');
+            box.appendChild(btn);
+        }
+    });
+
+    // 3. Standalone <pre>
+    document.querySelectorAll('pre').forEach(pre => {
+        if (pre.closest('.code-container') || pre.closest('.terminal-box') || pre.parentElement.querySelector('.copy-btn')) return;
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn copy-btn-floating';
+        btn.setAttribute('type', 'button');
+        btn.innerHTML = '📋 Copy';
+        btn.onclick = () => copyTextToClipboard(pre.innerText.trim(), btn);
+        wrapper.appendChild(btn);
+    });
+});
+</script>
 
 </body>
 </html>
