@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>টপিক ০৯: কোরিলেশন হিটম্যাপ ও ডাইভারসিফিকেশন ম্যাট্রিক্স</title>
+    <style>
+
+:root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-subtle: #f1f5f9;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --text-main: #0f172a;
+    --text-body: #334155;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --border-subtle: #cbd5e1;
+    --tag-bg: #e0f2fe;
+    --tag-text: #0369a1;
+    --success-bg: #ecfdf5;
+    --success-border: #a7f3d0;
+    --success-text: #065f46;
+    --code-bg: #090d16;
+    --code-text: #f8fafc;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Bengali", sans-serif;
+    background-color: var(--bg);
+    color: var(--text-body);
+    line-height: 1.6;
+    padding: 0.85rem 0.65rem;
+    font-size: 0.9rem;
+    -webkit-font-smoothing: antialiased;
+}
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+}
+.nav-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+}
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.65rem;
+    background: var(--surface);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.badge-row {
+    display: flex;
+    gap: 0.45rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+}
+.badge {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+}
+.badge-green {
+    background: #dcfce7;
+    color: #166534;
+}
+h1 {
+    color: var(--text-main);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 0.45rem;
+}
+p.subtitle {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+.section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 0.95rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+h2 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-bottom: 1px solid var(--surface-subtle);
+    padding-bottom: 0.45rem;
+}
+.step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.code-container {
+    background: var(--code-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0.65rem 0;
+    border: 1px solid #1e293b;
+    position: relative;
+}
+.code-header {
+    background: #111827;
+    padding: 0.35rem 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1f2937;
+}
+.code-title {
+    color: #94a3b8;
+    font-size: 0.74rem;
+    font-weight: 600;
+    font-family: monospace;
+}
+pre {
+    padding: 0.85rem 0.95rem;
+    overflow-x: auto;
+    font-family: "Consolas", "Fira Code", monospace;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    color: var(--code-text);
+    margin: 0;
+    background: transparent;
+}
+.terminal-box {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-left: 3px solid #10b981;
+    border-radius: 8px;
+    padding: 0.75rem 0.95rem;
+    margin: 0.65rem 0;
+    font-family: "Consolas", monospace;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+    position: relative;
+}
+.term-title {
+    color: #10b981;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.35rem;
+}
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    transition: all 0.2s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 5;
+    line-height: 1.2;
+}
+.copy-btn:hover, .copy-btn:active {
+    background: rgba(255, 255, 255, 0.22);
+}
+.copy-btn.copied {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+}
+.copy-btn-floating {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+.explanation-box {
+    background: var(--surface-subtle);
+    border-left: 3px solid var(--accent);
+    padding: 0.65rem 0.85rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.65rem 0;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text-body);
+}
+.callout {
+    padding: 0.75rem 0.95rem;
+    border-radius: 6px;
+    margin: 0.75rem 0;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    border-left: 3px solid;
+}
+.callout-info {
+    background: var(--accent-light);
+    border-left-color: var(--accent);
+    color: #1e40af;
+}
+.callout-tip {
+    background: var(--success-bg);
+    border-left-color: #10b981;
+    color: var(--success-text);
+}
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 0.75rem;
+    box-shadow: 0 2px 6px rgba(37,99,235,0.2);
+}
+.btn-action:hover {
+    background: #1d4ed8;
+}
+ul, ol {
+    padding-left: 1.25rem;
+    margin: 0.5rem 0;
+}
+li {
+    margin-bottom: 0.35rem;
+}
+:not(pre) > code {
+    font-family: "Consolas", monospace;
+    background: var(--surface-subtle);
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.84em;
+    color: #0f172a;
+}
+pre code,
+.code-container pre code,
+.terminal-box pre code,
+.terminal-box code {
+    font-family: "Consolas", "Fira Code", monospace;
+    background: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    font-size: inherit !important;
+}
+.terminal-box pre {
+    background: transparent !important;
+    color: #e2e8f0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="../../../index.html" class="nav-link">← মাস্টার সিলেবাস ড্যাশবোর্ড</a>
+        <a href="./Project/index.html" class="nav-link">🚀 প্রজেক্ট ল্যাব ড্যাশবোর্ড</a>
+    </div>
+
+    <header>
+        <div class="badge-row">
+            <span class="badge">Phase 02: Data Visualization & Reporting</span>
+            <span class="badge badge-green">Topic 09: Correlation Heatmaps</span>
+        </div>
+        <h1>টপিক ০৯: কোরিলেশন হিটম্যাপ ও ডাইভারসিফিকেশন ম্যাট্রিক্স</h1>
+        <p class="subtitle">৮টি ভিন্ন ফাইন্যান্সিয়াল অ্যাসেটের রিটার্ন কোরিলেশন কালার গ্রেডিয়েন্ট হিটম্যাপে প্লট করে হেজিং পেয়ার নির্বাচন।</p>
+    </header>
+
+    <div class="section-card">
+        <h2><span class="step-num">০১</span> থিওরি ও মূল কনসেপ্ট</h2>
+        
+            <p><strong>Heatmap</strong> হলো 2D ম্যাট্রিক্সের সেলগুলোর সংখ্যাগত মানকে রঙের তীব্রতায় রূপান্তর করা। পোর্টফোলিও ম্যানেজমেন্টে দুটি অ্যাসেটের কোরিলেশন -১ থেকে +১ এর মধ্যে থাকে। +১ হলে পারফেক্ট পজিটিভ, ০ হলে আনকোরিলেটেড এবং -১ হলে পারফেক্ট হেজিং পেয়ার।</p>
+        
+    </div>
+
+    <div class="section-card">
+        <h2><span class="step-num">০২</span> বাস্তব ট্রেডিং কোড উদাহরণ</h2>
+        <div class="code-container">
+            <div class="code-header">
+                <span class="code-title">trading_example.py</span>
+            </div>
+            <pre><code>import matplotlib.pyplot as plt
+import numpy as np
+
+assets = ["BTC", "ETH", "SOL", "GOLD", "US30", "OIL"]
+
+# সিন্থেটিক কোরিলেশন ম্যাট্রিক্স (6 x 6)
+corr_matrix = np.array([
+    [ 1.00,  0.88,  0.78,  0.12,  0.35,  0.22],
+    [ 0.88,  1.00,  0.82,  0.15,  0.38,  0.25],
+    [ 0.78,  0.82,  1.00,  0.08,  0.29,  0.18],
+    [ 0.12,  0.15,  0.08,  1.00, -0.15,  0.05],
+    [ 0.35,  0.38,  0.29, -0.15,  1.00,  0.42],
+    [ 0.22,  0.25,  0.18,  0.05,  0.42,  1.00]
+])
+
+fig, ax = plt.subplots(figsize=(6, 5))
+cax = ax.imshow(corr_matrix, cmap="coolwarm", vmin=-1, vmax=1)
+
+ax.set_xticks(range(len(assets)))
+ax.set_yticks(range(len(assets)))
+ax.set_xticklabels(assets)
+ax.set_yticklabels(assets)
+
+fig.colorbar(cax, ax=ax, fraction=0.046, pad=0.04)
+ax.set_title("Cross-Asset Return Correlation Heatmap", fontweight="bold")
+
+print("Correlation Heatmap Rendered.")</code></pre>
+        </div>
+        <div class="terminal-box">
+            <div class="term-title">Terminal Output</div>
+            <pre><code>Correlation Heatmap Rendered.</code></pre>
+        </div>
+        <div class="explanation-box">
+            <strong>ব্যাখ্যা:</strong> ax.imshow() মেথড এবং coolwarm কালারম্যাপ ব্যবহার করে -১ (ঠান্ডা/নীল) থেকে +১ (উষ্ণ/লাল) স্কেলে হিটম্যাপ তৈরি করা হয়েছে।
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h2><span class="step-num">০৩</span> মোবাইল রিডিং টেকঅ্যাওয়ে (Key Takeaways)</h2>
+        <ul>
+            <li><strong>রিয়েল-ওয়ার্ল্ড অ্যাপ্লিকেশন:</strong> ৮টি ভিন্ন ফাইন্যান্সিয়াল অ্যাসেটের রিটার্ন কোরিলেশন কালার গ্রেডিয়েন্ট হিটম্যাপে প্লট করে হেজিং পেয়ার নির্বাচন।</li>
+            <li><strong>দক্ষতা অর্জন:</strong> অ্যালগরিদমিক ট্রেডিং সিস্টেমে ডেটার সঠিক আর্কিটেকচার ও গণনা নিশ্চিত করা।</li>
+            <li><strong>পরবর্তী পদক্ষেপ:</strong> নিচের বাটনে ট্যাপ করে প্রজেক্ট ল্যাব ড্যাশবোর্ডে গিয়ে ধাপে ধাপে সম্পূর্ণ কোড ওয়াকথ্রু দেখে নিন।</li>
+        </ul>
+        <a href="./Project/index.html" class="btn-action">প্রজেক্ট ল্যাব ড্যাশবোর্ড খুলুন →</a>
+    </div>
+</div>
+
+
+<script>
+function copyTextToClipboard(text, btn) {
+    function showSuccess() {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '✅ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+        }, 2000);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showSuccess).catch(() => {
+            fallbackCopy(text);
+        });
+    } else {
+        fallbackCopy(text);
+    }
+
+    function fallbackCopy(str) {
+        const ta = document.createElement('textarea');
+        ta.value = str;
+        ta.style.position = 'fixed';
+        ta.style.top = '0';
+        ta.style.left = '0';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try {
+            document.execCommand('copy');
+            showSuccess();
+        } catch (e) {
+            console.error('Copy failed:', e);
+        }
+        document.body.removeChild(ta);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Code Containers
+    document.querySelectorAll('.code-container').forEach(container => {
+        if (container.querySelector('.copy-btn')) return;
+        const header = container.querySelector('.code-header');
+        const pre = container.querySelector('pre');
+        if (!pre) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.setAttribute('type', 'button');
+        btn.innerHTML = '📋 Copy Code';
+        btn.onclick = () => copyTextToClipboard(pre.innerText.trim(), btn);
+
+        if (header) {
+            header.style.display = 'flex';
+            header.style.justifyContent = 'space-between';
+            header.style.alignItems = 'center';
+            header.appendChild(btn);
+        } else {
+            container.style.position = 'relative';
+            btn.classList.add('copy-btn-floating');
+            container.appendChild(btn);
+        }
+    });
+
+    // 2. Terminal Boxes
+    document.querySelectorAll('.terminal-box').forEach(box => {
+        if (box.querySelector('.copy-btn')) return;
+        box.style.position = 'relative';
+
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.setAttribute('type', 'button');
+        btn.innerHTML = '📋 Copy Output';
+        
+        btn.onclick = () => {
+            const preOrCode = box.querySelector('pre') || box.querySelector('code');
+            const clone = (preOrCode || box).cloneNode(true);
+            const internalTitle = clone.querySelector('.term-title');
+            if (internalTitle) internalTitle.remove();
+            const internalBtn = clone.querySelector('.copy-btn');
+            if (internalBtn) internalBtn.remove();
+            copyTextToClipboard(clone.innerText.trim(), btn);
+        };
+
+        const title = box.querySelector('.term-title');
+        if (title) {
+            const header = document.createElement('div');
+            header.className = 'term-header';
+            header.style.display = 'flex';
+            header.style.justifyContent = 'space-between';
+            header.style.alignItems = 'center';
+            header.style.marginBottom = '0.35rem';
+            title.parentNode.insertBefore(header, title);
+            header.appendChild(title);
+            header.appendChild(btn);
+        } else {
+            btn.classList.add('copy-btn-floating');
+            box.appendChild(btn);
+        }
+    });
+
+    // 3. Standalone <pre>
+    document.querySelectorAll('pre').forEach(pre => {
+        if (pre.closest('.code-container') || pre.closest('.terminal-box') || pre.parentElement.querySelector('.copy-btn')) return;
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn copy-btn-floating';
+        btn.setAttribute('type', 'button');
+        btn.innerHTML = '📋 Copy';
+        btn.onclick = () => copyTextToClipboard(pre.innerText.trim(), btn);
+        wrapper.appendChild(btn);
+    });
+});
+</script>
+
+</body>
+</html>
